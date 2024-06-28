@@ -1,5 +1,11 @@
 import { combineReducers } from 'redux';
-import { TOGGLE_THEME, SET_SEARCH_QUERY } from './actions';
+import {
+  TOGGLE_THEME,
+  SET_SEARCH_QUERY,
+  ADD_BLOG,
+  EDIT_BLOG,
+  DELETE_BLOG
+} from './actions';
 
 const initialBlogsState = [
   {
@@ -96,6 +102,14 @@ const initialBlogsState = [
 
 const blogsReducer = (state = initialBlogsState, action) => {
   switch (action.type) {
+    case ADD_BLOG:
+      return [...state, action.payload];
+    case EDIT_BLOG:
+      return state.map((blog) =>
+        blog.id === action.payload.id ? action.payload : blog
+      );
+    case DELETE_BLOG:
+      return state.filter((blog) => blog.id !== action.payload);
     default:
       return state;
   }

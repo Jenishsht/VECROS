@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage';
 import BlogDetail from './components/BlogDetails';
 import CategoryPage from './pages/CategoryPage'; 
 import Navbar from './components/Navbar';
+import BlogForm from './components/BlogForm';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import { lightTheme, darkTheme } from './theme';
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route exact path="/" element={<HomePage />} />
           <Route path="/category/:category" element={<CategoryPage />} />
           <Route path="/blog/:id" element={<BlogDetail />} />
+          <Route path="/edit/:id" element={<BlogForm />} />
         </Routes>
       </Router>
     </ThemeProvider>
